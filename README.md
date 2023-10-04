@@ -1,7 +1,7 @@
 ---
 description: >-
-  What are we doing for this... Tommy can probably just semi copy a sentence ion
-  his own words then erase the old one on this page
+  Testing a commit to GitHub with this merge as it has been a while since any
+  activity and integration.
 cover: .gitbook/assets/BannerTraditrionalFINISHED (1).png
 coverY: 124
 ---
