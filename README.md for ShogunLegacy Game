@@ -1,0 +1,120 @@
+### README.md for ShogunLegacy Game
+
+# ShogunLegacy
+
+**ShogunLegacy** blends the enchanting world of feudal Japan with an RPG battle system, inviting players into a realm where samurais, ninjas, and mystical creatures coexist. Engage in captivating battles, explore a rich world, and dive into a storyline imbued with Japanese folklore and strategy.
+
+## Table of Contents
+- [Getting Started](#getting-started)
+- [Gameplay Overview](#gameplay-overview)
+- [Technical Overview](#technical-overview)
+- [Development Path](#development-path)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Getting Started
+
+### Prerequisites
+- **Python**: Initial backend logic is implemented in Python.
+- **TypeScript**: Additional development, especially for front-end, will utilize TypeScript.
+- **Node.js**: Ensure Node.js is installed for TypeScript compilation and running JS scripts.
+
+### Installation
+1. Clone the repository:
+   ```
+   git clone https://github.com/[YourUsername]/ShogunLegacy.git
+   ```
+2. Navigate to the project directory and run the Python script for a CLI-based battle simulation:
+   ```
+   python shogun_legacy.py
+   ```
+3. For TypeScript implementations, navigate to the respective directory, install dependencies, compile and run the script:
+   ```
+   npm install
+   tsc [TypeScriptFileName].ts
+   node [TypeScriptFileName].js
+   ```
+
+## Gameplay Overview
+
+### Core Components
+- **Warrior**: A character with specific attributes like strength, defense, and health.
+- **Battle**: A function to conduct a battle between two warriors, determining the victor based on their attributes and attack-defense computations.
+
+### Development Ideas
+- **Character Classes**: Develop various character classes, each possessing unique abilities and weaknesses.
+- **Storyline**: Weave a storyline that intertwines historic and fantastical elements of feudal Japan.
+- **Multiplayer**: Introduce multiplayer functionalities for player-vs-player battles.
+- **World Exploration**: Enable players to explore a world filled with quests, allies, enemies, and mysteries.
+
+## Technical Overview
+
+### Current Implementation
+- **Python**: Basic logic for warrior attributes and battle mechanics are implemented in Python.
+
+### Future Integrations
+- **TypeScript / JavaScript**: Implement frontend and additional backend logic using TypeScript. Transition from a CLI-based system to a GUI, possibly employing a game engine or framework like Phaser.
+  
+### TypeScript Example: `warriorBattle.ts`
+
+```typescript
+class Warrior {
+    name: string;
+    strength: number;
+    defense: number;
+    health: number;
+
+    constructor(name: string, strength: number, defense: number, health: number) {
+        this.name = name;
+        this.strength = strength;
+        this.defense = defense;
+        this.health = health;
+    }
+
+    attack(opponent: Warrior): void {
+        const damage: number = this.strength - opponent.defense;
+        opponent.health -= Math.max(0, damage);
+    }
+
+    isAlive(): boolean {
+        return this.health > 0;
+    }
+}
+
+function battle(warrior1: Warrior, warrior2: Warrior): void {
+    let turn = Math.random() < 0.5 ? warrior1 : warrior2;
+    
+    while (warrior1.isAlive() && warrior2.isAlive()) {
+        if (turn === warrior1) {
+            warrior1.attack(warrior2);
+            turn = warrior2;
+        } else {
+            warrior2.attack(warrior1);
+            turn = warrior1;
+        }
+    }
+
+    console.log(`${warrior1.isAlive() ? warrior1.name : warrior2.name} emerges victorious!`);
+}
+
+const samurai = new Warrior("Samurai", 15, 5, 100);
+const ninja = new Warrior("Ninja", 12, 8, 100);
+
+battle(samurai, ninja);
+```
+
+## Development Path
+- Expand the variety of characters, weapons, and abilities.
+- Develop a GUI, possibly transitioning to a web-based game using HTML5 and Phaser.
+- Introduce a rich storyline and quest system.
+- Implement multiplayer functionalities using WebSockets for real-time interactions.
+
+## Contributing
+Contributions are welcomed! Read the [CONTRIBUTING.md](CONTRIBUTING.md) for more info on how to contribute to the project.
+
+## License
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
+
+---
+
+**Note**: Ensure to replace placeholder URLs and filenames accordingly. The TypeScript example demonstrates a similar logic implementation to the Python script, serving as a foundational step towards integrating TypeScript into the development.
